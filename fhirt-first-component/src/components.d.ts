@@ -6,6 +6,15 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface FhirtStopWatch {
+        "hours": string;
+        "hundredthSeconds": string;
+        "minutes": string;
+        "seconds": string;
+    }
+    interface FhirtStopWatchBox {
+        "updateInterval": number;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +31,18 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLFhirtStopWatchElement extends Components.FhirtStopWatch, HTMLStencilElement {
+    }
+    var HTMLFhirtStopWatchElement: {
+        prototype: HTMLFhirtStopWatchElement;
+        new (): HTMLFhirtStopWatchElement;
+    };
+    interface HTMLFhirtStopWatchBoxElement extends Components.FhirtStopWatchBox, HTMLStencilElement {
+    }
+    var HTMLFhirtStopWatchBoxElement: {
+        prototype: HTMLFhirtStopWatchBoxElement;
+        new (): HTMLFhirtStopWatchBoxElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +50,21 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "fhirt-stop-watch": HTMLFhirtStopWatchElement;
+        "fhirt-stop-watch-box": HTMLFhirtStopWatchBoxElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface FhirtStopWatch {
+        "hours"?: string;
+        "hundredthSeconds"?: string;
+        "minutes"?: string;
+        "seconds"?: string;
+    }
+    interface FhirtStopWatchBox {
+        "updateInterval"?: number;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +80,8 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "fhirt-stop-watch": FhirtStopWatch;
+        "fhirt-stop-watch-box": FhirtStopWatchBox;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +89,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "fhirt-stop-watch": LocalJSX.FhirtStopWatch & JSXBase.HTMLAttributes<HTMLFhirtStopWatchElement>;
+            "fhirt-stop-watch-box": LocalJSX.FhirtStopWatchBox & JSXBase.HTMLAttributes<HTMLFhirtStopWatchBoxElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
