@@ -48,10 +48,10 @@ export class WatchService {
     /**
    * @desc Updates the value of the units in for the watch
    */
-    advanceClock(updateInterval: number) {
-        this.hs += (updateInterval / 10);
+    advanceClock() {
+        this.hs++;
         if (this.hs >= 100) {
-            this.hs = this.hs - 100;
+            this.hs = 0;
             this.ss++;
             if (this.ss >= 60) {
                 this.ss = 0;
@@ -61,6 +61,12 @@ export class WatchService {
                     this.hh++;
                 }
             }
+        }
+    }
+
+    advanceClockBy(hundredthsOfSeconds: number) {
+        for (let i = 0; i < hundredthsOfSeconds; i++) {
+            this.advanceClock();
         }
     }
 

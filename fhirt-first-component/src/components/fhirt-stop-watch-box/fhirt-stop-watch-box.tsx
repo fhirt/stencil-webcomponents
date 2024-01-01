@@ -1,4 +1,4 @@
-import { Component, Prop, State, h } from '@stencil/core';
+import { Component, State, h } from '@stencil/core';
 import { WatchService } from '../../services/watch-service';
 
 @Component({
@@ -7,7 +7,6 @@ import { WatchService } from '../../services/watch-service';
   shadow: true,
 })
 export class FhirtStopWatchBox {
-  @Prop() updateInterval: number = 10;
   @State() hours = '00';
   @State() minutes = '00';
   @State() seconds = '00';
@@ -15,7 +14,7 @@ export class FhirtStopWatchBox {
   @State() isTimerRunning = false;
   timer: any = null;
   watchService = new WatchService();
-  sanitizedUpdateInterval = Math.floor(this.updateInterval / 10) * 10;
+  oneHundredthSecond: number = 10;
 
   /**
    * @desc Starts the timer, updates every 10 milliseconds
@@ -23,9 +22,9 @@ export class FhirtStopWatchBox {
   start() {
     this.isTimerRunning = true;
     this.timer = setInterval(() => {
-      this.watchService.advanceClock(this.sanitizedUpdateInterval);
+      this.watchService.advanceClock();
       this.updateView();
-    }, this.sanitizedUpdateInterval);
+    }, this.oneHundredthSecond);
   }
 
   /**

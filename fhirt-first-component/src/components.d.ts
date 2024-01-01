@@ -13,21 +13,6 @@ export namespace Components {
         "seconds": string;
     }
     interface FhirtStopWatchBox {
-        "updateInterval": number;
-    }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
 }
 declare global {
@@ -43,16 +28,9 @@ declare global {
         prototype: HTMLFhirtStopWatchBoxElement;
         new (): HTMLFhirtStopWatchBoxElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLElementTagNameMap {
         "fhirt-stop-watch": HTMLFhirtStopWatchElement;
         "fhirt-stop-watch-box": HTMLFhirtStopWatchBoxElement;
-        "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -63,26 +41,10 @@ declare namespace LocalJSX {
         "seconds"?: string;
     }
     interface FhirtStopWatchBox {
-        "updateInterval"?: number;
-    }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface IntrinsicElements {
         "fhirt-stop-watch": FhirtStopWatch;
         "fhirt-stop-watch-box": FhirtStopWatchBox;
-        "my-component": MyComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -91,7 +53,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "fhirt-stop-watch": LocalJSX.FhirtStopWatch & JSXBase.HTMLAttributes<HTMLFhirtStopWatchElement>;
             "fhirt-stop-watch-box": LocalJSX.FhirtStopWatchBox & JSXBase.HTMLAttributes<HTMLFhirtStopWatchBoxElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }
